@@ -21,3 +21,102 @@ SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ Ru
 SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0021s ]
 SQL: SELECT * FROM `wx_cjgj_column` WHERE `pid` = 0 AND `show` = 1 ORDER BY sort asc,hot desc,id desc  [ RunTime:0.0008s ]
 
+[ 2018-04-14T13:50:29+08:00 ] 127.0.0.1 /index.php/Home/Index/getXcxCfg?type=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000654s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000739s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'xcxConfig' LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2018-04-14T13:50:29+08:00 ] 127.0.0.1 /index.php/Home/Index/api?pid=0&type=pid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000480s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000479s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0022s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `pid` = 0 AND `show` = 1 ORDER BY sort asc,hot desc,id desc  [ RunTime:0.0009s ]
+
+[ 2018-04-14T13:50:29+08:00 ] 127.0.0.1 /index.php/Home/Index/api?type=getHot
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000385s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0022s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `show` = 1 AND `hot` = 1 ORDER BY sort desc  [ RunTime:0.0007s ]
+
+[ 2018-04-14T13:51:02+08:00 ] 127.0.0.1 /index.php/Home/Index/getXcxCfg?type=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000645s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000841s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0026s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'xcxConfig' LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2018-04-14T13:51:03+08:00 ] 127.0.0.1 /index.php/Home/Index/api?pid=0&type=pid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000323s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000443s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000509s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0015s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `pid` = 0 AND `show` = 1 ORDER BY sort asc,hot desc,id desc  [ RunTime:0.0008s ]
+
+[ 2018-04-14T13:51:03+08:00 ] 127.0.0.1 /index.php/Home/Index/api?type=getHot
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000322s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000550s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0018s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `show` = 1 AND `hot` = 1 ORDER BY sort desc  [ RunTime:0.0009s ]
+
+[ 2018-04-14T13:51:11+08:00 ] 127.0.0.1 /index.php/Home/Index/api?type=getComments&proid=5&authOpenid=46763dc5363d8ae2f486ecbe0cc7a3ad
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001633s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0015s ]
+SQL: INSERT INTO `wx_cjgj_userlog` (`authOpenid`,`type`,`data`) VALUES ('46763dc5363d8ae2f486ecbe0cc7a3ad','getComments','{\"proid\":\"5\"}') [ RunTime:0.0148s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_comment` [ RunTime:0.0076s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_user` [ RunTime:0.0013s ]
+SQL: SELECT `id`,`msg`,`score`,`authOpenid` FROM `wx_cjgj_comment` WHERE `proid` = 5 AND `show` = 1  [ RunTime:0.0003s ]
+
+[ 2018-04-14T13:51:16+08:00 ] 127.0.0.1 /index.php/Home/Index/api?type=ipdz&authOpenid=46763dc5363d8ae2f486ecbe0cc7a3ad&ip=
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000367s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000470s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0007s ]
+SQL: INSERT INTO `wx_cjgj_userlog` (`authOpenid`,`type`,`data`) VALUES ('46763dc5363d8ae2f486ecbe0cc7a3ad','ipdz','{\"ip\":\"127.0.0.1\"}') [ RunTime:0.0032s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0006s ]
+
