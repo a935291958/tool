@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="commonHead"/>
+    <style>
+        #pages .layui-laypage {
+            display: table;
+
+            margin: 20px auto;
+
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+
+    <include file="commonTop"/>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <include file="commonLeft"/>
+        </div>
+    </div>
+    <div class="layui-body">
+
+
+<!--
+        <div class="layui-btn-group" style="display: block;">
+            <button class="layui-btn layui-btn-sm" id="onadd">
+                <i class="layui-icon">&#xe654;</i>
+            </button>
+            
+        </div>
+-->
+
+
+        <!-- 内容主体区域 -->
+        <table class="allDataTable" width="100%" lay-even lay-skin="line" lay-size="lg">
+            <thead>
+            <tr>
+                <td class="layui-col-md1">ID</td>
+                <td class="layui-col-md1">昵称</td>
+                <td class="layui-col-md1">头像</td>
+                <td class="layui-col-md1">账号</td>
+                <td class="layui-col-md2">密码</td>
+                <td class="layui-col-md1">所属分组</td>
+                <td class="layui-col-md2">更新/添加时间</td>
+                <td class="layui-col-md2">操作</td>
+            </tr>
+            </thead>
+            <volist name="list" id="vo" mod="2" empty="暂时没有数据">
+                <tr class='layui-row layui-text <eq name="mod" value="1">layui-bg-gray</eq>'
+                    style="padding: 15px;font-size: 16px;">
+                    <td class="layui-col-md1">
+                        {$vo.id}
+                    </td>
+                    <td class="layui-col-md1">
+                        {$vo.nickname}
+                    </td>
+                    <td class="layui-col-md1">
+                        <!--window.location.origin+this.attr.src-->
+                        <img src="{$vo.img}" width="50" title="点击查看大图" style="cursor: pointer"  onclick="window.open(this.src)">
+                    </td>
+                    <td class="layui-col-md1">
+                        {$vo.user}
+                    </td>
+                    <td class="layui-col-md2">
+                        {$vo.pass}
+                    </td>
+                    <td class="layui-col-md1">
+                        {$vo.name}
+                    </td>
+
+
+
+
+                    <td class="layui-col-md2"
+                        title="更新时间：{$vo.uptime|date='m月d日',###},添加时间：{$vo.addtime|date='m月d日',###}">
+                        {$vo.uptime|date='m月d日',###} <sub>{$vo.addtime|date='m月d日',###}</sub>
+                    </td>
+                    <td class="layui-col-md1">
+                        <i class="layui-icon cp delRole icoFont" title="删除" data-id="{$vo.id}"
+                           data-type="del">&#xe640;</i>
+                        <a >
+                            <i class="layui-icon cp upadmin icoFont" title="修改"  data-id="{$vo.id}" data-type="up">&#xe642;</i>
+                        </a>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+
+        <div id="pages"></div>
+
+        <!--更新管理员-->
+        <div id="upformBox" style="display:none; ">
+            <form class="layui-form"  method="post" enctype="multipart/form-data">
+                <input type="hidden" value="" name="id" id="upid">
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">新密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="required" name="pass" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemoUpdate">立即提交</button>
+                        <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        By Cai.技术支持：935291958@qq.com
+    </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+<script>
+
+
+    //点击更新管理员
+    $('.upadmin').click(function () {
+        $id = $(this).data('id');
+        $('#upid').val($id);
+        layer.open({
+            title:'更新管理员',
+            content:$('#upformBox').html(),
+            btn:['取消']
+        });
+    });
+
+
+
+
+    //更新数据，用户点了提交按钮
+    layui.form.on('submit(formDemoUpdate)', function (data) {
+        $pass = data.field.pass;
+        $id = parseInt( data.field.id );
+
+        $.ajax({
+            url:'__CONTROLLER__/upAdmin',
+            type:'post',
+            data:{pass:$pass,id:$id},
+            success:function (data) {
+                if(data.res){
+                    layer.msg(data.msg);
+                    setTimeout(function () {
+                        window.location.href = window.location.href;
+                    },1000)
+                }else{
+                    layer.alert(data.msg);
+                }
+
+
+            },
+            error:function () {
+                layer.alert('请求失败');
+            }
+        });
+
+        return false;
+    });
+
+</script>
+
+
+</body>
+
+
+</html>

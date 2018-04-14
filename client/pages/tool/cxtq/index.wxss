@@ -1,0 +1,441 @@
+/* pages/tool/cxtq/index.wxss */
+.oh {
+  overflow: hidden;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.mar {
+  margin-left: auto;
+  margin-right: auto;
+}
+.con {
+  margin: 0 auto;
+}
+.ws {
+  white-space: nowrap;
+}
+.con1000 {
+  width: 1000px;
+  margin: 0 auto;
+}
+.con320 {
+  width: 320px;
+  margin: 0 auto;
+}
+.con310 {
+  width: 310px;
+  margin: 0 auto;
+}
+.con300 {
+  width: 300px;
+  margin: 0 auto;
+}
+.pRe {
+  position: relative;
+}
+.df {
+  display: flex;
+  display: -webkit-flex;
+}
+.cp {
+  cursor: pointer;
+}
+.vis {
+  visibility: hidden;
+}
+.resize {
+  resize: none;
+}
+.td {
+  text-decoration: none;
+}
+.red {
+  color: #ff0000;
+}
+.orange {
+  color: #ffa500;
+}
+.nof {
+  float: none;
+}
+.clear {
+  clear: both;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mt25 {
+  margin-top: 25px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.clearAfter:after {
+  content: "";
+  height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.imgDb img {
+  display: block;
+}
+.notMR > li:last-child {
+  margin-right: 0px;
+}
+.notML > li:last-child {
+  margin-left: 0px;
+}
+.db {
+  display: block;
+}
+.dn {
+  display: none;
+}
+.dt {
+  display: table;
+}
+.dtm {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imgMar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ws {
+  word-spacing: nowrap;
+}
+img.a {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin-left: -320px;
+  opacity: 0.8;
+}
+.main:after,
+.wp:after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+.wp {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cp {
+  cursor: pointer;
+}
+.banner img {
+  display: block;
+}
+@media only screen and (min-width: 640px) {
+  .wp {
+    max-width: 640px;
+  }
+  html {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .wp {
+    max-width: 600px;
+  }
+  html {
+    font-size: 100%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .wp {
+    max-width: 480px;
+  }
+  html {
+    font-size: 75%;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .wp {
+    max-width: 360px;
+  }
+  html {
+    font-size: 62.5%;
+  }
+}
+.f1 {
+  font-size: 1.1rem!important;
+}
+.f2 {
+  font-size: 1.2rem!important;
+}
+.f3 {
+  font-size: 1.3rem!important;
+}
+.f4 {
+  font-size: 1.4rem!important;
+}
+.f5 {
+  font-size: 1.5rem!important;
+}
+.c3 {
+  color: #333;
+}
+.fsc {
+  font-size: 90%;
+}
+.fst {
+  font-size: 130%;
+}
+.ban {
+  height: 415rpx;
+}
+.ban image {
+  width: 100%;
+  height: 100%;
+}
+page {
+  overflow-x: hidden;
+  width: 100%;
+}
+.top {
+  position: relative;
+}
+.top image {
+  width: 100%;
+  display: block;
+}
+.positionBox {
+  left: 0%;
+  top: 0%;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+.position {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+.position image {
+  width: 35rpx;
+  margin-right: .25em;
+}
+.position text {
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+.air {
+  color: #ffffff;
+  font-size: 0.7rem;
+  background: #aed675;
+  display: inline-block;
+  padding: .2rem .5rem;
+  text-align: center;
+  line-height: 1.05rem;
+  -webkit-border-radius: 10rpx;
+  -moz-border-radius: 10rpx;
+  -ms-border-radius: 10rpx;
+  -o-border-radius: 10rpx;
+  border-radius: 10rpx;
+  left: 2%;
+  top: 10%;
+  position: absolute;
+  z-index: 2;
+}
+.tempBox {
+  left: 0%;
+  top: 20%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.tempMain {
+  text-align: center;
+}
+.tempMain > view {
+  line-height: 1.1em;
+  color: #fff;
+}
+.msg {
+  left: 0%;
+  top: 56%;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+.msg text {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.temp {
+  color: #ffffff;
+  font-size: 4rem;
+}
+.weather {
+  font-size: 1.5rem;
+}
+.humidity {
+  font-size: 0.9rem;
+  margin-top: .5rem;
+}
+.search {
+  right: 2%;
+  top: 0%;
+  position: absolute;
+  z-index: 2;
+  margin-top: 1em;
+}
+.search image {
+  width: 40rpx;
+}
+.mid {
+  display: flex;
+  display: -webkit-flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mid > view {
+  flex: 1;
+}
+.box {
+  padding: 1em 10%;
+  border: #eee solid 1px;
+  border-right: hidden;
+  border-left: hidden;
+  margin-bottom: .5em;
+}
+.today {
+  font-size: 0.9rem;
+  padding-right: 1rem;
+}
+.today image {
+  width: 50rpx;
+}
+.date,
+.midWeather {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+}
+.midWeather {
+  margin-top: .25rem;
+}
+.tomorrow {
+  padding-left: 1rem;
+  border-left: 2rpx solid #eee;
+}
+.hourly {
+  padding-left: 0px;
+  padding-right: 0px;
+  overflow-x: hidden;
+}
+.hourlyList {
+  display: flex;
+  display: -webkit-flex;
+}
+.hourlyItem {
+  padding: 0px 1em;
+  text-align: center;
+}
+.hourlyItem image {
+  width: 40rpx ;
+  margin-top: .25rem;
+}
+.hourlyTime {
+  color: #212121;
+  font-size: 0.8rem;
+}
+.index {
+  padding: 0px;
+  border-top: 1px solid #eee;
+  border-bottom: hidden;
+}
+.indexItem {
+  border: 1px solid #eee;
+  border-right: hidden;
+  border-top: hidden;
+  text-align: center;
+}
+.indexItem image {
+  width: 60rpx;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: .5em;
+}
+.indexItem:last-child {
+  border-right: 1px solid #eee ;
+}
+.indexItem:first-child,
+.indexItem:nth-child(5) {
+  border-left: hidden;
+}
+.indexItem {
+  float: left;
+  width: 24%;
+}
+.ivalue {
+  color: #363636;
+  font-size: 0.8rem;
+  padding: .25em 0px;
+}
+.iname {
+  color: #989898;
+  font-size: 0.75rem;
+  padding-bottom: .5em;
+}
+.searchMain {
+  left: 0%;
+  top: 0%;
+  position: absolute;
+  z-index: 2;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.searchMain input,
+.searchMain button {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.searchMain input {
+  background: #fff;
+  margin-top: 10rem;
+  display: block;
+  height: 2em;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.searchMain button {
+  margin-top: 1em;
+}

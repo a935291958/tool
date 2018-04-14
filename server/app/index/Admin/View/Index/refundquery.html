@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="commonHead"/>
+    <script>
+        var ajaxPicname = '{$ajaxPicname}';
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <include file="commonTop"/>
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <include file="commonLeft"/>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <form class="layui-form" action="__ACTION__" method="post" enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">订单号类型</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="types" value="transaction_id" title="微信订单号" checked>
+                    <input type="radio" name="types" value="out_trade_no" title="商户订单号 ">
+                    <input type="radio" name="types" value="out_refund_no" title="商户退款单号">
+                    <input type="radio" name="types" value="refund_id" title="微信退款单号">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">订单号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="transaction">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+
+        <!--查询无结果 || 查询错误 S-->
+        <div class="layui-form" style="display: {$resFail}">
+
+            <hr>
+            <hr>
+            <h1 style="font-size: 30px">订单异常：</h1>
+            <br>
+            <div class="layui-form-item">
+                <label class="layui-form-label">appid</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.appid}" name="transaction">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">错误代码</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.err_code}" name="transaction">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">错误信息</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.err_code_des}" name="transaction">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户ID</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.mch_id}" name="transaction">
+                </div>
+            </div>
+
+        </div>
+        <!--查询无结果 E-->
+
+        <!--正常返回数据 S-->
+        <div class="layui-form" style="display: {$resSuccess}">
+
+            <hr>
+            <hr>
+            <h1 style="font-size: 30px">查询数据：</h1>
+            <br>
+            <div class="layui-form-item">
+                <label class="layui-form-label">小程序ID</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.appid}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.mch_id}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">微信订单号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.transaction_id}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户订单号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.out_trade_no}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">订单金额(分)</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.total_fee}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">现金支付金额(分)</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.cash_fee}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户退款单号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.out_refund_no_0}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款资金来源</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_account_0}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款渠道</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_channel_0}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款笔数</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_count}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">申请退款金额(分)</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_fee}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款入账账户</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_recv_accout_0}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款时间</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_success_time_0}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">退款状态</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" value="{$res.refund_status_0}">
+                </div>
+            </div>
+
+        </div>
+        <!--正常返回数据 E-->
+
+
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        By Cai.技术支持：935291958@qq.com
+    </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script src="__PUBLIC__/xsdxcx/js/project.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+
+
+
+</body>
+</html>

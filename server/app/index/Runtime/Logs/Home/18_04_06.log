@@ -1,0 +1,55 @@
+[ 2018-04-06T21:14:18+08:00 ] 127.0.0.1 /index.php/Home/Index/getXcxCfg?type=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.037770s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.037919s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0122s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'xcxConfig' LIMIT 1   [ RunTime:0.0014s ]
+
+[ 2018-04-06T21:14:19+08:00 ] 127.0.0.1 /index.php/Home/Index/api?pid=0&type=pid
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000686s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001810s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001995s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0119s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0084s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `pid` = 0 AND `show` = 1 ORDER BY sort asc,hot desc,id desc  [ RunTime:0.0031s ]
+
+[ 2018-04-06T21:14:20+08:00 ] 127.0.0.1 /index.php/Home/Index/api?type=getHot
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001365s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000809s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0021s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_userlog` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appcode' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_column` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `wx_cjgj_column` WHERE `show` = 1 AND `hot` = 1 ORDER BY sort desc  [ RunTime:0.0004s ]
+
+[ 2018-04-06T21:14:20+08:00 ] 127.0.0.1 /index.php/Home/Index/addUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000467s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000631s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appId' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'appSecret' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'userKey' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'userIv' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `wx_cjgj_user` [ RunTime:0.0015s ]
+SQL: SELECT `value` FROM `wx_cjgj_config` WHERE `key` = 'avatarDir' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wx_cjgj_user` WHERE `authOpenid` = '46763dc5363d8ae2f486ecbe0cc7a3ad' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT * FROM `wx_cjgj_user` WHERE `authOpenid` = '46763dc5363d8ae2f486ecbe0cc7a3ad' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [2] openssl_encrypt(): IV passed is only 6 bytes long, cipher expects an IV of precisely 16 bytes, padding with \0 F:\bdApiImg\app\index\Common\Common\function.php 第 187 行.
+SQL: UPDATE `wx_cjgj_user` SET `batteryLevel`='94' WHERE `id` = 4256 [ RunTime:0.0041s ]
+

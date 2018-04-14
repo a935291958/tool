@@ -1,0 +1,25 @@
+<!-- list.wxml -->
+
+<view class='hotTit'>{{title}}</view>
+
+<block wx:for="{{thisSubclass}}" wx:key="k">
+   <view class='hotItem' data-id='{{item.id}}' data-src='{{item.src}}' data-project='{{item.name}}' data-type='{{item.type}}' data-id='{{item.id}}' bindtap='goTool'>
+      <view class='hotItemLeft'>
+         <image mode='widthFix' src='{{item.img}}'></image>
+      </view>
+      <view class='hotItemRig'>
+         <view class='proTit'>{{item.name}}</view>
+         <!-- <view class='proImg'>
+            <image mode='widthFix' src='/images/xx.png'></image>
+            <image mode='widthFix' src='/images/xx.png'></image>
+            <image mode='widthFix' src='/images/xx.png'></image>
+            <image mode='widthFix' src='/images/xx-2.png'></image>
+            <image mode='widthFix' src='/images/xx-1.png'></image>
+            <text class='uv'>
+                  月访问量:998
+               </text>
+         </view> -->
+         <view class='describe'>{{item.describe}}</view>
+      </view>
+   </view>
+</block>

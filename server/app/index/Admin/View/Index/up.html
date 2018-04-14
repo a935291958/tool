@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <include file="commonHead" />
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+  <include file="commonTop" />
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <include file="commonLeft" />
+      
+    </div>
+  </div>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+		<form class="layui-form" action="__CONTROLLER__/upBlog" method="post" enctype="multipart/form-data">
+			<div class="layui-form-item">
+		    <label class="layui-form-label">是否启用</label>
+		    <div class="layui-input-block">
+		      <input type="radio" name="enable" value="1" title="是" <if condition="$data['enable'] eq 1 ">checked </if> >
+		      <input type="radio" name="enable" value="0" title="否" <if condition="$data['enable'] eq 0 ">checked </if> >
+		    </div>
+		  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-block">
+      <input type="text"  name="title" required  lay-verify="required" value="{$data.title}" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-block">
+      <input type="number" value="{$data.usersort}"  name="usersort" min="1" max="9999"  placeholder="请输入排序，不输入默认0，数值越大越靠前" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">报名人数</label>
+    <div class="layui-input-block">
+      <input type="number" min="1" max="9999" name="number" required value="{$data.number}"  lay-verify="required" placeholder="请输入报名人数" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">活动时间</label>
+    <div class="layui-input-block">
+      <input type="text" name="times" required  lay-verify="required" value="{$data.times}" placeholder="请输入活动时间" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">活动主图</label>
+    <div class="layui-input-inline">
+      <div class="layui-btn" style="position: relative;">
+      	  <i class="layui-icon">&#xe67c;</i>上传图片
+
+      	<input style="position: absolute; top: 0px;left: 0px; opacity: 0;width: 100%;height: 100%;" type="file" name="img"     class="">
+
+      </div>
+      <br/><br/>
+      <img src="{$data.img}" alt="" width="100" title="当前图片">
+    </div>
+  </div>
+  
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">活动内容</label>
+    <div class="layui-input-block">
+      <textarea name="content" placeholder="请输入内容，仅限文字，不含各种样式" class="layui-textarea">{$data.content}</textarea>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <input type="hidden" name="id"  value="{$data.id}" />
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+
+
+</script>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    By Cai.技术支持：935291958@qq.com
+  </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+
+
+</body>
+
+
+<script type="text/javascript">
+	
+	
+	
+	$('.delBlog').click(function(){
+		var _this = $(this);
+		$id = _this.data('id');
+		$type = _this.data('type');
+		var layerIndex =  layer.confirm('确定要删除吗？',{
+			btn: ['是的', '我点错了'],
+			title:'询问框',
+			//用户点了确定
+			btn1:function(){
+				if( $type === 'del' ){
+					$.ajax({
+						url:'__CONTROLLER__/delBlog',
+						data:{'id':$id},
+						dataType:'json',
+						success:function(res){
+							if( 'object' === typeof res && res.msg  ){
+								layer.msg(res.msg);
+								_this.parent('td').parent('tr').css('display','none');
+								
+								
+							}else{
+								layer.alert('服务器返回数据有误！',{'icon':2,'time':3000});
+							}
+						},
+						error:function(){
+							layer.alert('请求服务器失败！',{'icon':2,'time':3000});  
+						}
+					})
+				}
+			},
+			
+		});
+		
+		
+	})
+</script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="commonHead"/>
+    <script>
+        var ajaxPicname = '{$ajaxPicname}';
+    </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <include file="commonTop"/>
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <include file="commonLeft"/>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <form class="layui-form" action="__ACTION__" method="post" enctype="multipart/form-data">
+            <div class="layui-form-item">
+                <label class="layui-form-label">前台显示</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="enable" value="1" title="是" checked>
+                    <input type="radio" name="enable" value="0" title="否">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序</label>
+                <div class="layui-input-block">
+                    <input type="number" name="usersort" min="1" max="9999" value="1" lay-verify="required|number"
+                           placeholder="请输入排序，不输入默认1，数值越大越靠前[99]" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">类目</label>
+                <div class="layui-input-block">
+                    <select name="xcxtype" lay-verify="required">
+                        <option value=""></option>
+                        <option value="1">广州新时代医院预约挂号中心</option>
+                        <option value="2">广州新时代整形美容医院</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">banner</label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline">
+                        <div class="layui-btn" style="position: relative;" id="banner">
+                            <i class="layui-icon">&#xe67c;</i>选择图片
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item" id="bannerImg" style="display: none">
+                <label class="layui-form-label">封面预览</label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline">
+                        <input type="hidden" lay-verify="required" value="" name="img">
+                        <img src="/Uploads_xsd/2017-11-30/5a1fa764f1b36.jpg" alt="" width="200">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+
+        <script>
+
+
+        </script>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        By Cai.技术支持：935291958@qq.com
+    </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+<script>
+    function goList() {
+        window.location.href = '__CONTROLLER__/yyghbanner';
+    }
+    //异步上传图片
+    var upload = layui.upload; //得到 upload 对象
+    //创建一个上传组件，banner
+    upload.render({
+        elem: '#banner'
+        , url: '__CONTROLLER__/getPicname'
+        , done: function (res, index, upload) { //上传后的回调
+            if ('object' !== typeof res) {
+                layer.alert('返回数据格式错误');
+                return false;
+            }
+
+            if (res.msg) {
+                layer.msg(res.msg);
+            } else if (res.info) {
+                layer.msg(res.info);
+            } else {
+                layer.msg('未知错误');
+            }
+
+            var url = res.url;
+            $('#bannerImg').css('display', 'block');
+            $('#bannerImg').find('img').attr('src', url);
+            $('#bannerImg').find('img').attr('title', url);
+            $('#bannerImg').find('input').attr('value', url);
+        }
+        , error: function (index, upload) {
+            layer.alert('请求上传封面失败');
+        }
+        , field: 'img'
+        , accept: 'images' //允许上传的文件类型
+        //,size: 50 //最大允许上传的文件大小
+        //,……
+    });
+
+    //监听提交按钮
+    layui.form.on('submit(formDemo)', function (data) {
+
+        console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+        $.ajax({
+            url: '__CONTROLLER__/addyyghban',
+            data: data.field,
+            type: 'post',
+            success: function (res) {
+                if ('object' !== typeof res) {
+                    layer.alert('返回数据错误');
+                    return false;
+                }
+                if (res.res) {
+
+                    $goListTimt = 3000;
+                    $t = setTimeout(function () {
+                        goList();
+                    },$goListTimt);
+
+                    $openId = layer.open({
+                        title: '倒计时'+$goListTimt/1000+'秒转到列表页',
+                        content: res.msg,
+                        btn: ['返回列表页', '继续添加'],
+                        yes: function (index, layero) {
+                            //按钮【按钮一】的回调
+                            clearTimeout($t);
+                            goList();
+                        },
+                        btn2: function (index, layero) {
+                            //按钮【按钮二】的回调
+                            clearTimeout($t);
+                            return true;
+                            //return false 开启该代码可禁止点击该按钮关闭
+                        }
+                    })
+
+                } else {
+                    layer.alert(res.msg);
+                }
+
+            },
+            error: function () {
+                layer.alert('请求失败');
+            }
+        });
+
+        return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+    });
+</script>
+
+
+</body>
+</html>

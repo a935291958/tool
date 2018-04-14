@@ -1,0 +1,42 @@
+/* pages/question/question.wxss */
+page{
+  background-color: #ededed;
+}
+.prompt{
+    margin: 30rpx;
+    text-align: center;
+    display: block;
+}
+.content{
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    width: 88%;
+    background-color: #fff;
+    padding: 0.5em;
+}
+.subBut{
+    margin: 10% auto 0 auto;
+    display: block;
+    width: 96%;
+}
+.tel{
+  width: 88%;
+  margin: 0 auto;
+  line-height: 2em;
+  margin-top: 20rpx;
+
+  height: 2em;
+}
+.telInput{
+  background-color: #fff;
+  width:66%;
+  height: 2em;
+  float: right;
+  padding-left: 0.5em;
+  border: 1px solid #ddd;
+}
+.contact {
+  float: left;
+}

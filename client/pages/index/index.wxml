@@ -1,0 +1,94 @@
+<!--pages/index /index.wxml-->
+
+<!-- 顶部的全部分类 -->
+<view class='itemBox'>
+   <view class='item'>
+      <!-- <view class='itemTop'>
+         <image mode='widthFix' src='/images/top-1.png'></image>
+         <text>生活服务</text>
+      </view> -->
+      <view class='listBox clearAfter'>
+         <block wx:for="{{classification}}" wx:key="k">
+            <view class='listItem' bindtap='onList' data-title='{{item.name}}' data-id='{{item.id}}'>
+               <image class='imgMar' mode='widthFix' src='{{item.img}}'></image>
+               <view>{{item.name}}</view>
+            </view>
+         </block>
+      </view>
+   </view>
+</view>
+
+<!-- 热门功能 -->
+
+<view class='hotTit'>热门功能</view>
+<!-- <view class='hotOrder'>
+   <view class='sentimentBut on'>人气最高</view>
+   <view class='evaluationBut'>口碑最好</view>
+</view> -->
+
+<view class='hotBox'>
+   <view class='sentiment'>
+      <block wx:for="{{hotProList}}" wx:key="k">
+         <view class='hotItem' bindtap='goPro' data-src='{{item.src}}' data-name='{{item.name}}' data-id='{{item.id}}'data-type='{{item.type}}'>
+            <view class='hotItemLeft'>
+               <image mode='widthFix' src='{{item.img}}'></image>
+            </view>
+            <view class='hotItemRig'>
+               <view class='proTit'>{{item.name}}</view>
+               <!-- <view class='proImg'>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx-2.png'></image>
+               <image mode='widthFix' src='/images/xx-1.png'></image>
+               <text class='uv'>
+                  月访问量:998
+               </text>
+            </view> -->
+               <view class='describe'>{{item.describe}}</view>
+            </view>
+         </view>
+      </block>
+      <!-- <view class='hotItem'>
+         <view class='hotItemLeft'>
+            <image mode='widthFix' src='/images/mdl.png'></image>
+         </view>
+         <view class='hotItemRig'>
+            <view class='proTit'>广州麦当劳</view>
+            <view class='proImg'>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx-2.png'></image>
+               <image mode='widthFix' src='/images/xx-1.png'></image>
+               <text class='uv'>
+                  月访问量:998
+               </text>
+            </view>
+            <view class='describe'>麦当劳的描述麦当劳的描述麦当劳的描述麦当劳的描述麦当劳的描述</view>
+         </view>
+      </view> -->
+
+   </view>
+   <!-- <view class='evaluation' hidden='true'>
+      <view class='hotItem'>
+         <view class='hotItemLeft'>
+            <image mode='widthFix' src='/images/mdl.png'></image>
+         </view>
+         <view class='hotItemRig'>
+            <view class='proTit'>广州麦当劳</view>
+            <view class='proImg'>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx-2.png'></image>
+               <image mode='widthFix' src='/images/xx-1.png'></image>
+               <text class='uv'>
+                  月访问量:998
+               </text>
+            </view>
+            <view class='describe'>麦当劳的描述麦当劳的描述麦当劳的描述麦当劳的描述麦当劳的描述</view>
+         </view>
+      </view>
+   </view> -->
+</view>

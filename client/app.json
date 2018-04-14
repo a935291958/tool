@@ -1,0 +1,37 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/user/index",
+		"pages/question/question",
+		"pages/sponsorship/index",
+		"pages/tool/phone/index",
+		"pages/templates/comments",
+		"pages/tool/cxtq/index",
+		"pages/list/index"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "超级工具集合",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"borderStyle": "white",
+		"color": "#929292",
+		"selectedColor": "#55c9c4",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/images/tabBar/1.png",
+				"selectedIconPath": "/images/tabBar/1-1.png"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": "个人中心",
+				"iconPath": "/images/tabBar/2.png",
+				"selectedIconPath": "/images/tabBar/2-1.png"
+			}
+		]
+	}
+}

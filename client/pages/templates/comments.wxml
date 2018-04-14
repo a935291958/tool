@@ -1,0 +1,72 @@
+<!--pages/templates/comments.wxml-->
+
+
+<view class='hotTit'>评价</view>
+
+<!-- 添加评论 -->
+
+<view class='addCms'>
+   <form bindsubmit='cmdSubmit'>
+      <input name="proid" hidden='true' value='{{proid}}'></input>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+         <view class="picker score">
+            评分：{{array[index]}}
+            <image class='scoreImg' mode='widthFix' src='/images/down.png'></image>
+            <input name="score" hidden='true' value='{{array[index]}}'></input>
+         </view>
+      </picker>
+
+
+      <textarea name='msg' value=''></textarea>
+      <button class='submitBut' form-type='submit' type='primary' size='mini'>提交</button>
+   </form>
+</view>
+
+
+
+
+<!-- 评论列表 -->
+
+<view class='comments'>
+   <!-- <view class='cmsItem'>
+      <view class='cmsItemLeft'>
+         <image mode='widthFix' src='/images/userImg.png'></image>
+      </view>
+      <view class='cmsItemRig'>
+         <view class='cmsItemName'>
+            <text>1000</text>
+            <view class='cmsItemXxImg'>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+               <image mode='widthFix' src='/images/xx.png'></image>
+            </view>
+         </view>
+
+         <view class='cmsItemMsg'>
+            现支持两种节点，通过type来区分，分别是元素节点和文本节点，默认是元素节点，在富文本区域里显示的HTML节点
+         </view>
+      </view>
+   </view> -->
+   <block wx:for="{{comList}}" wx:key='k'>
+      <view class='cmsItem'>
+         <view class='cmsItemLeft'>
+            <image mode='widthFix' src='{{item.localAvatarUrl}}'></image>
+         </view>
+         <view class='cmsItemRig'>
+            <view class='cmsItemName'>
+               <text>{{item.nickName}}</text>
+               <view class='cmsItemXxImg'>
+                  <block wx:for="{{item.score}}" wx:key="k">
+                     <image mode='widthFix' src='/images/xx.png'></image>
+                  </block>
+               </view>
+            </view>
+
+            <view class='cmsItemMsg'>
+               {{item.msg}}
+            </view>
+         </view>
+      </view>
+   </block>
+</view>

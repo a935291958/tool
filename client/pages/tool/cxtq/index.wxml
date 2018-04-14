@@ -1,0 +1,135 @@
+<!--pages/tool/cxtq/index.wxml-->
+<view class='top'>
+   <image mode='widthFix' src='/images/cxtqTopBg.png'></image>
+   <view class='positionBox'>
+      <view class='position'>
+         <image mode='widthFix' src='/images/position.png'></image>
+         <text>{{result.city}}</text>
+      </view>
+   </view>
+   <view class='air' style='background:{{result.aqi.aqiinfo.color}}'>
+      空气质量
+      <view>{{result.aqi.aqiinfo.level}}</view>
+   </view>
+   <view class='tempBox'>
+      <view class='tempMain'>
+         <view class='temp'>{{result.temp}}°</view>
+         <view class='weather'>{{result.weather}}</view>
+         <view class='humidity'>湿度
+            <text>{{result.humidity}}%</text>
+         </view>
+      </view>
+   </view>
+   <view class='search'>
+      <image  bindtap='searchShow' mode='widthFix' src='/images/search.png'></image>
+   </view>
+   <view class='searchMain' hidden='{{searchMainHiden}}'>
+		<form class='searchMainForm' bindsubmit='searchSubmit'>
+			<input name="keyword" value='' maxlength='10' placeholder="请输入需要查询的地区名称"></input>
+			<button form-type="submit" type="primary">查询</button>
+		</form>
+   </view>
+   <view class='msg'>
+      
+		<text>{{result.aqi.aqiinfo.affect}}</text>
+   </view>
+
+</view>
+
+<view class='mid box'>
+   <view class='today'>
+      <view class='date'>
+         <text>今天</text>
+         <text>{{result.temphigh}}/{{result.templow}}°</text>
+      </view>
+      <view class='midWeather'>多云
+         <image mode='widthFix' src='{{weathercn}}{{result.img}}.png'></image>
+      </view>
+   </view>
+   <view class='today tomorrow'>
+      <view class='date'>{{result.winddirect}}
+         <text>{{result.windpower}}</text>
+      </view>
+      <view class='midWeather'>风速
+
+         <text>{{result.windspeed}} m/s</text>
+      </view>
+   </view>
+</view>
+
+<view class='box hourly'>
+   <movable-area style="height: 150rpx;width: 100%;">
+      <movable-view style="height: 100%; width: 3600rpx;" x="0" y="0" damping="22" inertia="true" out-of-bounds="false" direction="horizontal">
+         <view class='hourlyList clearAfter'>
+            <block wx:for="{{result.hourly}}" wx:key="k">
+               <view class='hourlyItem'>
+                  <view class='hourlyTime'>{{item.time}}</view>
+                  <image mode='widthFix' src='{{weathercn}}{{item.img}}.png'></image>
+                  <view class='hourlyTemp'>{{item.temp}}°</view>
+               </view>
+            </block>
+         </view>
+      </movable-view>
+   </movable-area>
+</view>
+
+
+<view class='box hourly'>
+   <movable-area style="height: 210rpx;width: 100%;">
+      <movable-view style="height: 100%; width: 1300rpx;" x="{{x}}" y="{{y}}" damping="22" inertia="true" out-of-bounds="false" direction="horizontal">
+         <view class='hourlyList clearAfter'>
+            <block wx:for="{{result.daily}}" wx:key="k">
+               <view class='hourlyItem'>
+                  <view class='hourlyTime'>{{(item.date)}}</view>
+                  <view class='hourlyTime'>{{item.day.weather}}</view>
+                  <image mode='widthFix' src='{{weathercn}}{{item.day.img}}.png'></image>
+                  <view class='hourlyTime'>{{item.night.templow}}°/{{item.day.temphigh}}°</view>
+                  <view class='hourlyTime'>{{item.day.windpower}}</view>
+               </view>
+            </block>
+         </view>
+
+      </movable-view>
+   </movable-area>
+</view>
+
+<view class='box index clearAfter'>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[0].iname}}' data-content='{{result.index[0].detail}}'>
+      <image mode='widthFix' src='/images/kt.png'></image>
+      <view class="ivalue">{{result.index[0].ivalue}}</view>
+      <view class="iname">空调</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[1].iname}}' data-content='{{result.index[1].detail}}'>
+      <image mode='widthFix' src='/images/yd.png'></image>
+      <view class="ivalue">{{result.index[1].ivalue}}</view>
+      <view class="iname">运动</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[2].iname}}' data-content='{{result.index[2].detail}}'>
+      <image mode='widthFix' src='/images/ty.png'></image>
+      <view class="ivalue">{{result.index[2].ivalue}}</view>
+      <view class="iname">紫外线</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[3].iname}}' data-content='{{result.index[3].detail}}'>
+      <image mode='widthFix' src='/images/sb.png'></image>
+      <view class="ivalue">{{result.index[3].ivalue}}</view>
+      <view class="iname">感冒</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[4].iname}}' data-content='{{result.index[4].detail}}'>
+      <image mode='widthFix' src='/images/xc.png'></image>
+      <view class="ivalue">{{result.index[4].ivalue}}</view>
+      <view class="iname">洗车</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[5].iname}}' data-content='{{result.index[5].detail}}'>
+      <image mode='widthFix' src='/images/kq.png'></image>
+      <view class="ivalue">{{result.index[5].ivalue}}</view>
+      <view class="iname">空气</view>
+   </view>
+   <view class='indexItem' bindtap='showContent' data-title='{{result.index[6].iname}}' data-content='{{result.index[6].detail}}'>
+      <image mode='widthFix' src='/images/yf.png'></image>
+      <view class="ivalue">{{result.index[6].ivalue}}</view>
+      <view class="iname">穿衣</view>
+   </view>
+</view>
+
+<!-- 加载评论列表 -->
+<comments proid='{{proid}}' comList='{{comList}}'></comments>

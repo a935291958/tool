@@ -1,0 +1,88 @@
+<!--pages/tool/phone.wxml-->
+
+<view class='top'>
+   {{project}}
+</view>
+
+<view class='main'>
+   <form bindsubmit='formSubmit'>
+      <input class='phone' value='' placeholder='{{placeholder}}' name="mixvalue" type="text" focus="true" confirm-type="search"></input>
+      <input name="types" value="{{types}}" hidden='true'></input>
+      <button form-type='submit' size='mini' type='primary'>查询</button>
+
+      <view>
+         <button class='localBut' hidden='{{isHide.localBut}}' form-type='submit' type='primary' data-but='local'>查询本机</button>
+      </view>
+   </form>
+</view>
+
+
+<view class='result' hidden='{{isHide.gsd}}'>
+   <view class='resultItem'>手机号：
+      <input value='{{result.shouji}}'></input>
+   </view>
+   <view class='resultItem'>运营商：
+      <input value='{{result.company}}'></input>
+   </view>
+   <view class='resultItem'>省份：
+      <input value='{{result.province}}'></input>
+   </view>
+   <view class='resultItem'>市区：
+      <input value='{{result.city}}'></input>
+   </view>
+   <view class='resultItem'>区域代码：
+      <input value='{{result.areacode}}'></input>
+   </view>
+</view>
+
+
+<view class='result' hidden='{{isHide.ipdz}}'>
+   <view class='resultItem'>IP：
+      <input value='{{result.ip}}'></input>
+   </view>
+   <view class='resultItem'>运营商：
+      <input value='{{result.isp}}'></input>
+   </view>
+   <view class='resultItem'>国家：
+      <input value='{{result.country}}'></input>
+   </view>
+   <view class='resultItem'>大区：
+      <input value='{{result.area}}'></input>
+   </view>
+   <view class='resultItem'>省份：
+      <input value='{{result.region}}'></input>
+   </view>
+   <view class='resultItem'>市区：
+      <input value='{{result.city}}'></input>
+   </view>
+</view>
+
+
+<view class='result resultIpdw' hidden='{{isHide.ipdw}}'>
+   <view class='resultItem'>省份：
+      <input value='{{result.province}}'></input>
+   </view>
+   <view class='resultItem'>市区：
+      <input value='{{result.city}}'></input>
+   </view>
+   <view class='resultItem'>城市代码：
+      <input value='{{result.adcode}}'></input>
+   </view>
+   <block wx:for="{{result.rectangleList}}" wx:key="k">
+      <view class='resultItem'>经纬度参考：
+         <input value='{{item}}'></input>
+         <button size='mini' type='primary' data-i='{{index}}' data-value='{{item}}' bindtap='ipdwMap'>定位</button>
+      </view>
+   </block>
+</view>
+
+<view class='ipdwMap' hidden='{{isHide.ipdwMap}}'>
+	<text class='ipdwMapText'>注：该定位存在误差，仅供参考</text>
+    <map markers="{{mapData.markers}}" show-location="true" longitude="{{mapData.longitude}}" latitude="{{mapData.latitude}}"></map> 
+	 <!-- <map markers="{{mapData.markers}}" show-location="true" longitude="116.0004008" latitude="24.19833684"></map> -->
+</view>
+
+
+
+<!-- 加载评论列表 -->
+<comments proid='{{proid}}' comList='{{comList}}'></comments>

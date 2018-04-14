@@ -1,0 +1,55 @@
+<!--pages/user/index.wxml-->
+
+<view class='userTop clearAfter'>
+   <view class='userImg' bindtap='onLoad'>
+      <image src='{{userImg}}'></image>
+   </view>
+   <view class='userName' bindtap='onLoad'>
+      {{userName}}
+   </view>
+
+</view>
+
+<view class='info'>
+   <view class='infoRow tel hyfw'>
+      <button class='butGoView' open-type="contact">
+         <view class='infoLeft'>
+            在线客服
+         </view>
+         <view class='infoRig'>
+            <image class='more' src='/images/more.png'></image>
+         </view>
+      </button>
+   </view>
+
+   <view class='infoRow tel hyfw' bindtap='goQue'>
+      <view class='infoLeft'>
+         使用建议
+      </view>
+      <view class='infoRig'>
+         <image class='more' src='/images/more.png'></image>
+      </view>
+   </view>
+   <view class='infoRow tel hyfw' bindtap='goSp'>
+      <view class='infoLeft'>
+         请我喝杯咖啡
+      </view>
+      <view class='infoRig'>
+         <image class='more' src='/images/more.png'></image>
+      </view>
+   </view>
+
+	
+
+</view>
+
+<!-- <view class='info'>
+	<view class='infoRow tel jyjl' bindtap='goOrder'>
+		<view class='infoLeft'>
+			交易记录
+		</view>
+		<view class='infoRig'  >
+			<image class='more' src='/images/more.png'></image>
+		</view>
+	</view>
+</view> -->

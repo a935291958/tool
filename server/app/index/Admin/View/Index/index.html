@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="commonHead" />
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+
+    <include file="commonTop" />
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <include file="commonLeft" />
+    </div>
+  </div>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+     <table  class="allDataTable" width="100%" lay-even lay-skin="line" lay-size="lg">
+     	 <thead>
+	     	<tr>
+		    	<td class="layui-col-md1">ID</td>
+		    	<td class="layui-col-md3">文章标题</td>
+		    	<td class="layui-col-md2">活动大图</td>
+		    	<td class="layui-col-md1">是否启用</td>
+		    	<td class="layui-col-md1">排序</td>
+		    	<td class="layui-col-md2">更新/添加时间</td>
+		    	<td class="layui-col-md2">操作</td>
+	    	</tr>
+    	 </thead>
+    <volist name="list" id="vo" mod="2" empty="暂时没有数据">
+		<tr  class='layui-row layui-text <eq name="mod" value="1">layui-bg-gray</eq>' style="padding: 15px;font-size: 16px;">
+			<td class="layui-col-md1">
+				{$vo.id}
+			</td>
+			<td class="layui-col-md3">
+				{$vo.title}
+			</td>
+			<td class="layui-col-md2">
+				<img src="{$vo.img}"/>
+			</td>
+			<td class="layui-col-md1">
+				<if condition="$vo['enable'] eq 1 ">是<else /> 否</if>
+			</td>
+			<td class="layui-col-md1">
+				{$vo.usersort}
+			</td>
+			<td class="layui-col-md2" title="更新时间：{$vo.uptime|date='m月d日',###},添加时间：{$vo.addtime|date='m月d日',###}">
+				{$vo.uptime|date='m月d日',###} <sub>{$vo.addtime|date='m月d日',###}</sub>
+			</td>
+			<td class="layui-col-md2">
+				<i class="layui-icon cp delBlog icoFont" title="删除" data-id = "{$vo.id}" data-type = "del">&#xe640;</i>
+				<a href="__CONTROLLER__/upBlogView/id/{$vo.id}">
+					<i class="layui-icon cp upBlog icoFont" title="修改" data-id = "{$vo.id}" data-type = "up">&#xe642;</i>
+				</a>
+			</td>
+		</tr>
+    </volist>
+    </table>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    By Cai.技术支持：935291958@qq.com
+  </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+
+
+</body>
+
+
+<script type="text/javascript">
+	
+	
+	
+	$('.delBlog').click(function(){
+		var _this = $(this);
+		$id = _this.data('id');
+		$type = _this.data('type');
+		var layerIndex =  layer.confirm('确定要删除吗？',{
+			btn: ['是的', '我点错了'],
+			title:'询问框',
+			//用户点了确定
+			btn1:function(){
+				if( $type === 'del' ){
+					$.ajax({
+						url:'__CONTROLLER__/delBlog',
+						data:{'id':$id},
+						dataType:'json',
+						success:function(res){
+							if( 'object' === typeof res && res.msg  ){
+								layer.msg(res.msg);
+								_this.parent('td').parent('tr').css('display','none');
+								
+								
+							}else{
+								layer.alert('服务器返回数据有误！',{'icon':2,'time':3000});
+							}
+						},
+						error:function(){
+							layer.alert('请求服务器失败！',{'icon':2,'time':3000});  
+						}
+					})
+				}
+			},
+			
+		});
+		
+		
+	})
+</script>
+</html>

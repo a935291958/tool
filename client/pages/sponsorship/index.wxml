@@ -1,0 +1,2 @@
+<!--pages/sponsorship/index.wxml-->
+<image bindtap='saveImg' data-src='{{imgSrc}}' style='width:100%' mode='widthFix' src='{{imgSrc}}'></image>

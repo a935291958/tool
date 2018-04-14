@@ -1,0 +1,12 @@
+/**app.wxss**/
+page{
+	
+}
+.butGoView {
+  padding: 0px;
+  background: none;
+  text-align: left;
+}
+.butGoView:after {
+  display: none;
+}

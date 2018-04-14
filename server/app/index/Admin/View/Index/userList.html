@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="commonHead"/>
+    <style>
+        .layui-table-cell{
+            height: 40px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <include file="commonTop"/>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <include file="commonLeft"/>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <table id="mainTable" lay-filter=""></table>
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        By Cai.技术支持：935291958@qq.com
+    </div>
+</div>
+<script src="__PUBLIC__/common/layui/layuiAll.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+
+
+</body>
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#mainTable'
+            , url: '__ACTION__' //数据接口
+            , page: true //开启分页
+            , cols: [[ //表头
+                {field: 'id', title: 'ID', width: 130, sort: true, sort: true, align: "centent"}
+                , {field: 'openid', title: 'openid', width: 250}
+                , {field: 'authopenid', title: 'authopenid', width: 300}
+                , {field: 'nickname', title: '昵称', width: 130}
+                , {field: 'avatarurl', title: '头像', width: 130}
+                , {field: 'gender', title: '性别', width: 130}
+                , {field: 'model', title: '手机型号', width: 130}
+                , {field: 'ip', title: 'ip', width: 130}
+                , {field: 'addtime', title: '记录时间', width: 200}
+            ]]
+            , done: function (res, curr, count) {
+                //时间
+                $('.laytable-cell-1-addtime').each(function (i) {
+                    if (i === 0) {
+                        return true;
+                    }
+                    $time = $(this).text();
+                    var newDate = new Date();
+                    newDate.setTime($time * 1000);
+                    $(this).html(newDate.toLocaleString());
+
+                });
+                //性别
+
+                $('.laytable-cell-1-avatarurl').each(function (i) {
+                    $imgUrl =  $(this).html();
+                    if(!$imgUrl || $imgUrl.indexOf('http') < 0){return true;}
+                    $(this).html('<img height="40" src="'+$imgUrl+'">')
+
+                });
+                //头像
+                $('.laytable-cell-1-gender').each(function (i) {
+                    $thisNumSex = parseInt( $(this).html() );
+                    switch ($thisNumSex){
+                        case 0:
+                            $(this).html('未知');
+                            break;
+                        case 1:
+                            $(this).html('男');
+                            break;
+                        case 2:
+                            $(this).html('女');
+                            break;
+                    }
+
+                });
+
+            }
+        });
+
+    });
+</script>
+</html>
